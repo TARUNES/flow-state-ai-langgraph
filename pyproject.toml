@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "cerina-protocol-foundry"
+version = "0.1.0"
+description = "Multi-agent CBT protocol generation system"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+uvicorn = "*"
+langgraph = "*"
+pydantic = "*"
+mcp = "*"
+langgraph-checkpoint-sqlite = "^3.0.1"
+langchain-ollama = "^1.0.1"
+langchain-openai = "^1.1.3"
+python-dotenv = "^1.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
