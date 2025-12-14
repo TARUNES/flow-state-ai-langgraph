@@ -133,39 +133,7 @@ function App() {
             ))}
           </div>
 
-          {/* Resume Existing Thread Section */}
-          <div className="flex flex-col items-center gap-3">
-            <div className="text-xs text-gray-600 uppercase tracking-widest font-bold">Or Resume Active Session</div>
-            <div className="flex w-full max-w-sm gap-2">
-              <input
-                type="text"
-                placeholder="Enter Thread ID (e.g. from Claude)..."
-                className="glass-input h-10 text-sm w-full font-mono text-center"
-                onChange={(e) => {
-                  // Check if it looks like a UUID and auto-load?
-                  // For now just manual load
-                  if (e.target.value.length > 10) setThreadId(e.target.value);
-                }}
-                onKeyDown={async (e) => {
-                  if (e.key === "Enter") {
-                    const targetId = (e.target as HTMLInputElement).value;
-                    if (!targetId) return;
-                    setLoading(true);
-                    try {
-                      const res = await axios.get(`${API_URL}/thread/${targetId}`);
-                      setThreadId(targetId);
-                      setData(res.data);
-                      setDraftEdit(res.data.state.current_draft || "");
-                    } catch (err) {
-                      alert("Thread not found");
-                    } finally {
-                      setLoading(false);
-                    }
-                  }
-                }}
-              />
-            </div>
-          </div>
+
         </div>
       </div>
     );
